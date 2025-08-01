@@ -2,7 +2,7 @@ version: '3'
 
 services:
   html-manager:
-    build: .
+    image: getyufelix/singlefile-gui:latest
     ports:
       - "5000:5000"
     volumes:
