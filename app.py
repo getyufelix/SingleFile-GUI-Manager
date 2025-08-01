@@ -7,7 +7,7 @@ app = Flask(__name__, static_folder='static', template_folder='templates')
 
 # 配置
 BASE_DIR = os.path.expanduser("/html_files")  # 默认目录
-#os.makedirs(BASE_DIR, exist_ok=True)
+os.makedirs(BASE_DIR, exist_ok=True)
 
 @app.route('/')
 def index():
@@ -217,5 +217,4 @@ def before_request():
         return jsonify({"error": "Request too large"}), 413
 
 if __name__ == '__main__':
-    #app.run(host='0.0.0.0', port=5001, debug=True)
-    app.run(port=5000, debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
