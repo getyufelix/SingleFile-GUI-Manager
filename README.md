@@ -25,8 +25,7 @@
 ### 使用Docker运行
 
 ```bash
-docker build -t singlefile-gui .
-docker run -d -p 5000:5000 -v /path/to/your/html/files:/html_files singlefile-gui
+docker run -d -p 5000:5000 -v /path/to/your/html/files:/html_files getyufelix/singlefile-gui:latest
 ```
 
 ### 本地运行
