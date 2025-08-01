@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  html-manager:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - /path/to/your/html/files:/html_files
+    restart: unless-stopped
