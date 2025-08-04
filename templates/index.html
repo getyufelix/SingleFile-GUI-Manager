@@ -460,7 +460,7 @@
             <div class="modal-body">
                 <div class="form-group">
                     <label class="form-label">分组名称</label>
-                    <input type="text" class="form-input" id="group-name-input" placeholder="例如: java, python">
+                    <input type="text" class="form-input" id="group-name-input">
                 </div>
             </div>
             <div class="modal-footer">
@@ -1106,7 +1106,6 @@
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
-                        path: state.currentPath,
                         name: groupName
                     })
                 });
@@ -1128,6 +1127,9 @@
                         loadFiles(data.path);
                     }, 300);
                 }
+                
+                // 清空输入框
+                elements.groupNameInput.value = '';
             } catch (error) {
                 showError('创建分组失败: ' + error.message);
             }

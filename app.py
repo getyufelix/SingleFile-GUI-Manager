@@ -57,22 +57,19 @@ def list_files():
 @app.route('/api/create_group', methods=['POST'])
 def create_group():
     data = request.json
-    current_path = data.get('path', '')
     group_name = data.get('name', '')
     
     if not group_name:
         return jsonify({"error": "Group name is required"}), 400
     
-    # 安全检查
-    full_path = os.path.join(BASE_DIR, current_path, group_name)
-    if not os.path.normpath(full_path).startswith(os.path.normpath(BASE_DIR)):
-        return jsonify({"error": "Access denied"}), 403
+    # 直接在根目录创建
+    full_path = os.path.join(BASE_DIR, group_name)
     
     try:
         os.makedirs(full_path, exist_ok=False)
         return jsonify({
             "success": True, 
-            "path": os.path.join(current_path, group_name)
+            "path": group_name  # 返回相对根目录的路径
         })
     except FileExistsError:
         return jsonify({"error": "Directory already exists"}), 400
